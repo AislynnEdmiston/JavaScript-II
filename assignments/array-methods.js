@@ -102,8 +102,51 @@ console.log(ticketPriceTotal.reduce(function (pv, cv, ci, arr){
 // ==== Challenge 5: Be Creative ====
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
-// Problem 1
+// Problem 1 - In a new array filter the runners and their ids to help identify them as they cross the finish line.
 
-// Problem 2
+let idAndName = [];
 
-// Problem 3
+runners.map(function(runner){
+    idAndName.push(`Runner number ${runner.id} is ${runner.first_name} ${runner.last_name}`);
+})
+
+console.log(idAndName);
+
+// Problem 2 - Make arrays that are based on the shirt sizes for the runners. m, s, 2xl, l, xl, xs, 3xl,
+
+let xtraSmall = [];
+let small = [];
+let medium = [];
+let large = [];
+let xtraLarge = [];
+let twoXlarge = [];
+
+runners.filter(function(runner){
+    if(`${runner.shirt_size}` === 'XS'){
+        xtraSmall.push(`XtraSmall: ${runner.first_name} ${runner.last_name}`)
+    } else if (`${runner.shirt_size}` === 'S'){
+        small.push(`Small: ${runner.first_name} ${runner.last_name}`)
+    } else if (`${runner.shirt_size}` === 'M'){
+        medium.push(`Medium: ${runner.first_name} ${runner.last_name}`)
+    } else if (`${runner.shirt_size}` === 'L'){
+        large.push(`Large: ${runner.first_name} ${runner.last_name}`)
+    } else if (`${runner.shirt_size}` === 'XL'){
+        xtraLarge.push(`XtraLarge: ${runner.first_name} ${runner.last_name}`)
+    }  else if (`${runner.shirt_size}` === '2XL'){
+        twoXlarge.push(`2XtraLarge: ${runner.first_name} ${runner.last_name}`)
+    }
+})
+
+console.log(xtraSmall, small, medium, large, xtraLarge, twoXlarge);
+
+
+// Problem 3 - Sort the runners in alphabetical order. 
+
+let sorted = []; 
+
+runners.map(function(runner){
+    sorted.push(`${runner.first_name} ${runner.last_name}`);
+
+})
+
+console.log(sorted.sort());
