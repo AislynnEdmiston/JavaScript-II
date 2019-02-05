@@ -56,28 +56,97 @@ const runners = [{"id":1,"first_name":"Charmain","last_name":"Seiler","email":"c
 // ==== Challenge 1: Use .forEach() ====
 // The event director needs both the first and last names of each runner for their running bibs.  Combine both the first and last names into a new array called fullName. 
 let fullName = [];
+
+runners.forEach(function firstAndLastName(element) {
+    let i = element.first_name + " " + element.last_name;
+    fullName.push(i);
+});
+
+
 console.log(fullName);
 
 // ==== Challenge 2: Use .map() ====
 // The event director needs to have all the runner's first names converted to uppercase because the director BECAME DRUNK WITH POWER. Convert each first name into all caps and log the result
 let allCaps = [];
+
+runners.map(function (runners){
+    allCaps.push(`${runners.first_name.toUpperCase()}`)
+});
+
 console.log(allCaps); 
 
 // ==== Challenge 3: Use .filter() ====
 // The large shirts won't be available for the event due to an ordering issue.  Get a list of runners with large sized shirts so they can choose a different size. Return an array named largeShirts that contains information about the runners that have a shirt size of L and log the result
 let largeShirts = [];
+
+runners.filter(function(runner){
+    if (`${runner.shirt_size}` === 'L'){
+        largeShirts.push(runner);
+    }
+})
+
 console.log(largeShirts);
 
 // ==== Challenge 4: Use .reduce() ====
 // The donations need to be tallied up and reported for tax purposes. Add up all the donations into a ticketPriceTotal array and log the result
 let ticketPriceTotal = [];
-console.log(ticketPriceTotal);
+
+runners.forEach(function(runner){
+    ticketPriceTotal.push(runner.donation);
+})
+
+console.log(ticketPriceTotal.reduce(function (pv, cv, ci, arr){
+    return pv + cv;
+}));
 
 // ==== Challenge 5: Be Creative ====
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
-// Problem 1
+// Problem 1 - In a new array filter the runners and their ids to help identify them as they cross the finish line.
 
-// Problem 2
+let idAndName = [];
 
-// Problem 3
+runners.map(function(runner){
+    idAndName.push(`Runner number ${runner.id} is ${runner.first_name} ${runner.last_name}`);
+})
+
+console.log(idAndName);
+
+// Problem 2 - Make arrays that are based on the shirt sizes for the runners. m, s, 2xl, l, xl, xs, 3xl,
+
+let xtraSmall = [];
+let small = [];
+let medium = [];
+let large = [];
+let xtraLarge = [];
+let twoXlarge = [];
+
+runners.filter(function(runner){
+    if(`${runner.shirt_size}` === 'XS'){
+        xtraSmall.push(`XtraSmall: ${runner.first_name} ${runner.last_name}`)
+    } else if (`${runner.shirt_size}` === 'S'){
+        small.push(`Small: ${runner.first_name} ${runner.last_name}`)
+    } else if (`${runner.shirt_size}` === 'M'){
+        medium.push(`Medium: ${runner.first_name} ${runner.last_name}`)
+    } else if (`${runner.shirt_size}` === 'L'){
+        large.push(`Large: ${runner.first_name} ${runner.last_name}`)
+    } else if (`${runner.shirt_size}` === 'XL'){
+        xtraLarge.push(`XtraLarge: ${runner.first_name} ${runner.last_name}`)
+    }  else if (`${runner.shirt_size}` === '2XL'){
+        twoXlarge.push(`2XtraLarge: ${runner.first_name} ${runner.last_name}`)
+    }
+})
+
+console.log(xtraSmall, small, medium, large, xtraLarge, twoXlarge);
+
+
+// Problem 3 - Sort the runners in alphabetical order. 
+
+let sorted = []; 
+
+runners.map(function(runner){
+    sorted.push(`${runner.first_name} ${runner.last_name}`);
+
+})
+
+console.log(sorted.sort());
